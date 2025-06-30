@@ -22,13 +22,13 @@ public class TextSwitcher_Legacy : MonoBehaviour
 
         "Konnichiwa!          \nSelamat datang di Sakura Kaigoshisetsu.",
 
-        "Salam kenal~ Aku Asa,     \nperawat di Sakura Kaigoshisetsu.     \nSenang bisa bekerja sama  denganmu~",
+        "Salam kenal~ Aku Asa, perawat di\nSakura Kaigoshisetsu.     \nSenang bisa bekerja sama  denganmu~",
 
         "Mari belajar bersama dengan menyenangkan di sini. Aku akan membantumu memahami tugas    sehari-hari seorang kaigoshi.",
 
         "Yuk, belajar bareng dan jadi perawat yang penuh perhatian dan kasih sayang!",
 
-        "Pertama-tama mari kita lihat ruangan apa saja yang ada di      Sakura Kaigoshisetsu, yuk!",
+        "Pertama-tama mari kita lihat ruangan apa saja yang ada di\nSakura Kaigoshisetsu,\nyuk!",
 
         "Harap diingat nama-nama ruangan yang ada, ya!"
     };

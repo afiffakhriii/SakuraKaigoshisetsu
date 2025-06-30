@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 1593958200129229755
     second: bg_title_0
+  - first:
+      213: -3732586751570920000
+    second: bg_title_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,10 +132,10 @@ TextureImporter:
       name: bg_title_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1080
-        height: 1920
+        x: 128
+        y: 952
+        width: 750
+        height: 649
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,6 +145,27 @@ TextureImporter:
       bones: []
       spriteID: bb31681b980ee1610800000000000000
       internalID: 1593958200129229755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_title_1
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 1583
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cd39432020333cc0800000000000000
+      internalID: -3732586751570920000
       vertices: []
       indices: 
       edges: []

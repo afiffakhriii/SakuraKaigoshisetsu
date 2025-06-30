@@ -36,7 +36,6 @@ public class SceneKuisTextAnimator : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenTexts);
         }
 
-        // Setelah semua teks selesai, munculkan tombol
         nextButton.gameObject.SetActive(true);
     }
 
@@ -52,8 +51,10 @@ public class SceneKuisTextAnimator : MonoBehaviour
 
     void OnNextClicked()
     {
-        // Ganti ke scene kuis, atau lanjut sesuai kebutuhan
-        // Contoh:
-        // SceneManager.LoadScene("SceneKuisSoal");
+        // ✅ Set flag bahwa kita datang dari SceneTransisiKuisRoom2
+        PlayerPrefs.SetInt("DariSceneTransisiKuisRoom2", 1);
+
+        // ✅ Pindah ke SceneRoomList
+        SceneManager.LoadScene("SceneRoomList");
     }
 }
