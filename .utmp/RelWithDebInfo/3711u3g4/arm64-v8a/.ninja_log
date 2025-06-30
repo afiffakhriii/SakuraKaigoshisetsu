@@ -1,0 +1,21 @@
+# ninja log v5
+194	1110	7729774876512892	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	560eb0e55a9229db
+48	5579	7729774921383035	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	ce437d2a5db65652
+1115	2464	7729774884443257	D:/AFIF/JOB/Unity/Project Sakura Kaigoshisetsu/Sakura Kaigoshisetsu/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3711u3g4/obj/arm64-v8a/libswappywrapper.so	480d846bd24c145a
+130	4256	7729774907744385	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	80d252588b1c4687
+27	4498	7729774910353470	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	bdf14b85c1238ebd
+2	5091	7729774916587720	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a3d28fbd46da5200
+99	4583	7729774911243420	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b129ee0455a4a396
+161	4941	7729774914861057	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5380c467161c0caf
+73	5397	7729774919544877	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8f6c680f819cf200
+5579	6021	7729774924510083	D:/AFIF/JOB/Unity/Project Sakura Kaigoshisetsu/Sakura Kaigoshisetsu/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3711u3g4/obj/arm64-v8a/libgame.so	cddbc432fbed5087
+167	1150	7729782381342200	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	560eb0e55a9229db
+1152	2763	7729782393360356	D:/AFIF/JOB/Unity/Project Sakura Kaigoshisetsu/Sakura Kaigoshisetsu/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3711u3g4/obj/arm64-v8a/libswappywrapper.so	480d846bd24c145a
+154	3345	7729782403453303	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	80d252588b1c4687
+100	3432	7729782404344747	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	bdf14b85c1238ebd
+126	3492	7729782404943001	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b129ee0455a4a396
+139	3694	7729782406954174	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5380c467161c0caf
+89	3769	7729782407713338	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a3d28fbd46da5200
+112	4139	7729782411423338	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8f6c680f819cf200
+42	4327	7729782413279200	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	ce437d2a5db65652
+4328	4752	7729782416044429	D:/AFIF/JOB/Unity/Project Sakura Kaigoshisetsu/Sakura Kaigoshisetsu/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3711u3g4/obj/arm64-v8a/libgame.so	cddbc432fbed5087

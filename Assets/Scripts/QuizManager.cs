@@ -191,7 +191,7 @@ public class QuizManager : MonoBehaviour
         questions.Add(new Question
         {
         text = "Apa bahasa Jepang dari gambar ke-18?",
-        options = new string[] { "A. のみます。", "B. たべもの。", "C. くだもの。", "D. みもの。" },
+        options = new string[] { "A. のみます。", "B. たべもの。", "C. くだもの。", "D. のみもの。" },
         correctAnswer = "D"
         });
         questions.Add(new Question

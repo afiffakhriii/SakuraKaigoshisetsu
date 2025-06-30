@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Kanami
+  companyName: MalDevStudio
+  productName: Sakura Kaigoshisetsu
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -160,7 +160,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.PTRuangBelajarJepang.Kanami
+    Android: com.MalDevStudio.SakuraKaigoshisetsu
     Standalone: com.DefaultCompany.2DProject
   buildNumber:
     Bratwurst: 0
@@ -288,7 +288,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 6af658c90af18ef46bae2df187ea9310, type: 3}
+      m_Icon: {fileID: 2800000, guid: 773efce560c248a439649edde1050376, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -782,8 +782,8 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: -8030570891474961867, guid: 08c732dba3c302e4aa9af10f9eb3bab5, type: 3}
-  splashScreenBackgroundSourcePortrait: {fileID: -277352572623347688, guid: 057de0f71fa3a9b46ac6f87a93d8f377, type: 3}
+  splashScreenBackgroundSourceLandscape: {fileID: 0}
+  splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 0
   spritePackerPolicy: 
   webGLMemorySize: 32
