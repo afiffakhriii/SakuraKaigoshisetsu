@@ -268,7 +268,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: Kita mulai dari ruangan yang pertama...
+  m_Text: Selanjutnya ruangan yang kedua~
 --- !u!222 &936869253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -433,12 +433,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003305677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db442569dbc8243449c1f5bd4e1e3b8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 708aed2517dccf8469b10f7cbdb899aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 936869252}
   nextButton: {fileID: 2130100814}
-  backButton: {fileID: 1155044568}
   typeSpeed: 0.05
   delayBetweenTexts: 1.3
 --- !u!1 &1155044565
@@ -545,7 +544,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SceneTransisiKuisRoom2
+          m_StringArgument: SceneKuisRuangMakan
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1155044569
@@ -985,7 +984,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2130100815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1003305678}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SceneKamarMandi
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2130100815
 MonoBehaviour:
   m_ObjectHideFlags: 0

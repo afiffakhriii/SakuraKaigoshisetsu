@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneTransisiKuisRoom2.unity
     guid: 6dc613b78fedc414c9047938c14cf3e9
   - enabled: 1
-    path: Assets/Scenes/SceneRoomList.unity
+    path: Assets/Scenes/RoomList/SceneRoomList.unity
     guid: 84c5020dcedbeb74d86147c725f051d5
   - enabled: 1
     path: Assets/Scenes/RuangMakan/SceneRuangMakan.unity
@@ -42,10 +42,16 @@ EditorBuildSettings:
     path: Assets/Scenes/RuangMakan/SceneMakananMinuman.unity
     guid: 3d2dfa422e578ed439af25171e4057d9
   - enabled: 1
+    path: Assets/Scenes/RuangMakan/SceneRuangMakan2.unity
+    guid: 9a88a441b62ab25469848eac14abf1c4
+  - enabled: 1
     path: Assets/Scenes/RuangMakan/ScenePerawatanMakan.unity
     guid: fcbac4d3f563df04ea703b7a2e0774cb
   - enabled: 1
-    path: Assets/Scenes/RuangMakan/SceneRuangMakan2.unity
+    path: Assets/Scenes/RuangMakan/SceneRuangMakan3.unity
+    guid: 590d1d78a3a022a488fff5c43626dfdd
+  - enabled: 1
+    path: Assets/Scenes/RuangMakan/SceneRuangMakan4.unity
     guid: 6325b983762e5c94fafc0b140a0ba56e
   - enabled: 1
     path: Assets/Scenes/RuangMakan/SceneMemo.unity
@@ -54,8 +60,32 @@ EditorBuildSettings:
     path: Assets/Scenes/Kuis/SceneKuisRuangMakan.unity
     guid: c7bd8382ad8f0dc4f9a270f9370a661e
   - enabled: 1
+    path: Assets/Scenes/RoomList/SceneRoomList2.unity
+    guid: 2bd74e71f4f1083418306d512104b3ed
+  - enabled: 1
     path: Assets/Scenes/KamarMandi/SceneKamarMandi.unity
     guid: ee78b9a5cf93eb9468b43002e0b13042
+  - enabled: 1
+    path: Assets/Scenes/KamarMandi/SceneKeberihanTubuh.unity
+    guid: 12b331626fa779746829092d6b8f7d02
+  - enabled: 1
+    path: Assets/Scenes/KamarMandi/SceneKamarMandi2.unity
+    guid: 8e867ef3eb4b7ff48a65fe3d10e16b8b
+  - enabled: 1
+    path: Assets/Scenes/KamarMandi/ScenePerawatanMandi.unity
+    guid: c9fb0ab83276a214189ff7be4d81f313
+  - enabled: 1
+    path: Assets/Scenes/KamarMandi/SceneKamarMandi3.unity
+    guid: 4d7702805bb8f454893cbbca142b24be
+  - enabled: 1
+    path: Assets/Scenes/KamarMandi/SceneMemoKamarMandi.unity
+    guid: cb6ab46c2cd08354584dbae18cd8db96
+  - enabled: 1
+    path: Assets/Scenes/Kuis/SceneKuisKamarMandi.unity
+    guid: 28bfa2fd0a47a2a4995b8a51b04e2bff
+  - enabled: 1
+    path: Assets/Scenes/RoomList/SceneRoomList3.unity
+    guid: 83e6cf8fd11980748899e5efaa25d9e5
   - enabled: 1
     path: Assets/Scenes/SceneProfile.unity
     guid: 9624490d897371f45976e46d42eb639e

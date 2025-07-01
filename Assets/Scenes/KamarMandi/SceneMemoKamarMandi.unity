@@ -510,7 +510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2522236200840042174, guid: 312af6f919cc0ac478dc3a7d6d925a48, type: 3}
+  m_Sprite: {fileID: -4208920487803226860, guid: 1fd1ed3fa77dce84c8066abdbf770135, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -692,12 +692,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 851321609}
   backgroundSprites:
-  - {fileID: -2522236200840042174, guid: 312af6f919cc0ac478dc3a7d6d925a48, type: 3}
-  - {fileID: -573150115239919657, guid: 2fa82981b97c90a4cbf10a22a2cef8a2, type: 3}
+  - {fileID: -4208920487803226860, guid: 1fd1ed3fa77dce84c8066abdbf770135, type: 3}
+  - {fileID: -8207304903246591275, guid: d95411074ea0a2d48aade5e9446d659e, type: 3}
   nextButton: {fileID: 385489492}
   backButton: {fileID: 453029164}
-  nextSceneName: SceneKuisRuangMakan
-  backSceneName: SceneRuangMakan4
+  nextSceneName: SceneKuisKamarMandi
+  backSceneName: SceneKamarMandi3
 --- !u!1 &1560853399
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BackgroundSwitcher : MonoBehaviour
+public class MemoBackgroundSwitcher : MonoBehaviour
 {
     [Header("Background UI Image")]
     public Image backgroundImage;
@@ -15,9 +15,9 @@ public class BackgroundSwitcher : MonoBehaviour
     public Button nextButton;
     public Button backButton;
 
-    [Header("Scene yang Dipanggil Setelah BG Terakhir")]
+    [Header("Nama Scene Berikutnya dan Sebelumnya")]
     public string nextSceneName = "SceneKuisRuangMakan";
-    public string backSceneName = "SceneRuangMakan2";
+    public string backSceneName = "SceneRuangMakan4";
 
     private int currentIndex = 0;
 
@@ -29,7 +29,7 @@ public class BackgroundSwitcher : MonoBehaviour
         if (backButton != null)
             backButton.onClick.AddListener(SwitchBack);
 
-        // Tampilkan background pertama
+        // Tampilkan background pertama saat start
         if (backgroundSprites != null && backgroundSprites.Count > 0 && backgroundImage != null)
         {
             currentIndex = 0;
@@ -42,14 +42,14 @@ public class BackgroundSwitcher : MonoBehaviour
         if (backgroundSprites == null || backgroundSprites.Count == 0 || backgroundImage == null)
             return;
 
-        if (currentIndex < backgroundSprites.Count - 1)
+        if (currentIndex == 0)
         {
-            currentIndex++;
+            currentIndex = 1;
             backgroundImage.sprite = backgroundSprites[currentIndex];
         }
-        else
+        else if (currentIndex == 1)
         {
-            // Sudah di background terakhir, pindah ke scene kuis
+            // Jika sudah di background ke-2, pindah ke scene kuis
             SceneManager.LoadScene(nextSceneName);
         }
     }
@@ -59,14 +59,14 @@ public class BackgroundSwitcher : MonoBehaviour
         if (backgroundSprites == null || backgroundSprites.Count == 0 || backgroundImage == null)
             return;
 
-        if (currentIndex > 0)
+        if (currentIndex == 1)
         {
-            currentIndex--;
+            currentIndex = 0;
             backgroundImage.sprite = backgroundSprites[currentIndex];
         }
-        else
+        else if (currentIndex == 0)
         {
-            // Jika sudah di background pertama, kembali ke Scene sebelumnya
+            // Kembali ke scene sebelumnya jika sedang di background pertama
             SceneManager.LoadScene(backSceneName);
         }
     }
