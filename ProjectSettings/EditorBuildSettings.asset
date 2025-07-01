@@ -134,11 +134,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneProfile.unity
     guid: 9624490d897371f45976e46d42eb639e
-  - enabled: 1
-    path: Assets/Scenes/Scene13.unity
-    guid: 1d1e4f2d8f94f684d9f3eae1a1e174d9
-  - enabled: 1
-    path: Assets/Scenes/Scene14.unity
-    guid: f62f2ec08eddde745b21149c9f450788
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
