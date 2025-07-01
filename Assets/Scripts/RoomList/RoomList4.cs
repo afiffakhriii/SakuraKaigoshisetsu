@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RoomList4 : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class RoomList4 : MonoBehaviour
 
     private List<string> textList = new List<string>()
     {
-        "Demikianlah ruangan yang ada di Sakura Kaigoshisetsu yang kita pelajari untuk saat ini.",
+        "Demikianlah ruangan yang ada di Sakura Kaigoshisetsu yang kita pelajari untuk saat ini. ",
         "Ruangan berikutnya akan kita pelajari di kesempatan berikutnya. Sekarang mari uji pemahamanmu, yuk!"
     };
 
@@ -22,23 +23,20 @@ public class RoomList4 : MonoBehaviour
     void Start()
     {
         nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(ShowNextText);
-        StartCoroutine(PlayText(textList[currentIndex]));
+        nextButton.onClick.AddListener(OnNextClicked);
+        StartCoroutine(PlayAllTexts());
     }
 
-    void ShowNextText()
+    IEnumerator PlayAllTexts()
     {
-        if (!isTyping && currentIndex < textList.Count - 1)
-        {
-            currentIndex++;
-            nextButton.gameObject.SetActive(false);
-            StartCoroutine(PlayText(textList[currentIndex]));
-        }
-        else
-        {
-            nextButton.gameObject.SetActive(false);
-            // Tambahkan aksi jika ingin lanjut ke scene lain di sini
-        }
+        yield return StartCoroutine(PlayText(textList[0]));
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        currentIndex++;
+        yield return StartCoroutine(PlayText(textList[1]));
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        nextButton.gameObject.SetActive(true);
     }
 
     IEnumerator PlayText(string fullText)
@@ -53,7 +51,11 @@ public class RoomList4 : MonoBehaviour
         }
 
         isTyping = false;
-        yield return new WaitForSeconds(delayBetweenTexts);
-        nextButton.gameObject.SetActive(true);
+    }
+
+    void OnNextClicked()
+    {
+        PlayerPrefs.SetString("KuisDari", "SceneRoomList4");
+        SceneManager.LoadScene("SceneMainKuis");
     }
 }
