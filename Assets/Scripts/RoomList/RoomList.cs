@@ -17,30 +17,31 @@ public class RoomList : MonoBehaviour
 
     private int currentIndex = 0;
     private bool isTyping = false;
+    private Coroutine typingCoroutine;
+    private string currentFullText = "";
 
     void Start()
     {
         nextButton.gameObject.SetActive(false);
         nextButton.onClick.AddListener(ShowNextText);
-        StartCoroutine(PlayText(textList[currentIndex]));
+        PlayCurrentText();
     }
 
-    void ShowNextText()
+    void Update()
     {
-        if (!isTyping && currentIndex < textList.Count - 1)
+        if (Input.GetMouseButtonDown(0) && isTyping)
         {
-            currentIndex++;
-            nextButton.gameObject.SetActive(false);
-            StartCoroutine(PlayText(textList[currentIndex]));
-        }
-        else
-        {
-            nextButton.gameObject.SetActive(false);
-            // Tambahkan aksi jika ingin lanjut ke scene lain di sini
+            SkipTyping();
         }
     }
 
-    IEnumerator PlayText(string fullText)
+    void PlayCurrentText()
+    {
+        currentFullText = textList[currentIndex];
+        typingCoroutine = StartCoroutine(TypeText(currentFullText));
+    }
+
+    IEnumerator TypeText(string fullText)
     {
         isTyping = true;
         displayText.text = "";
@@ -52,7 +53,42 @@ public class RoomList : MonoBehaviour
         }
 
         isTyping = false;
+
         yield return new WaitForSeconds(delayBetweenTexts);
         nextButton.gameObject.SetActive(true);
+    }
+
+    void SkipTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        displayText.text = currentFullText;
+        isTyping = false;
+
+        StartCoroutine(ShowNextButtonAfterDelay());
+    }
+
+    IEnumerator ShowNextButtonAfterDelay()
+    {
+        yield return new WaitForSeconds(delayBetweenTexts);
+        nextButton.gameObject.SetActive(true);
+    }
+
+    void ShowNextText()
+    {
+        nextButton.gameObject.SetActive(false);
+
+        if (currentIndex < textList.Count - 1)
+        {
+            currentIndex++;
+            PlayCurrentText();
+        }
+        else
+        {
+            // Semua teks selesai. Tambahkan logika pindah scene atau set active objek lain jika diperlukan
+        }
     }
 }

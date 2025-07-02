@@ -131,8 +131,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/SceneLast.unity
     guid: 2bbac0c560083514a8c2abe6e1bd8720
-  - enabled: 1
-    path: Assets/Scenes/SceneProfile.unity
-    guid: 9624490d897371f45976e46d42eb639e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

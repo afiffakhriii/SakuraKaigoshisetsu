@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class KuisKamarMandi : MonoBehaviour
 {
+    [Header("Teks Narasi (Typing Effect)")]
+    public Text typingText;
+    [TextArea(2, 5)] public string typingContent = "Yuki Obaasan membutuhkan bantuan di kamar mandi. Yuk bantu dengan menjawab pertanyaan berikut!";
+    public float typeSpeed = 0.04f;
+
     [Header("Opsi Jawaban (Drag Button A–D ke sini)")]
     public Button optionA;
     public Button optionB;
@@ -35,11 +41,26 @@ public class KuisKamarMandi : MonoBehaviour
         ResetBackgroundColors();
 
         optionA.onClick.AddListener(() => OnOptionClicked(optionA, false));
-        optionB.onClick.AddListener(() => OnOptionClicked(optionB, true));  
+        optionB.onClick.AddListener(() => OnOptionClicked(optionB, true));  // ✅ Jawaban benar
         optionC.onClick.AddListener(() => OnOptionClicked(optionC, false));
         optionD.onClick.AddListener(() => OnOptionClicked(optionD, false));
 
         nextButton.onClick.AddListener(GoToNextScene);
+
+        if (typingText != null)
+        {
+            StartCoroutine(TypeTextEffect());
+        }
+    }
+
+    IEnumerator TypeTextEffect()
+    {
+        typingText.text = "";
+        foreach (char c in typingContent)
+        {
+            typingText.text += c;
+            yield return new WaitForSeconds(typeSpeed);
+        }
     }
 
     void ResetBackgroundColors()
@@ -58,7 +79,6 @@ public class KuisKamarMandi : MonoBehaviour
         Image bg = GetBackgroundForButton(btn);
         bg.color = isCorrect ? correctColor : wrongColor;
 
-        // Tampilkan jawaban benar (B) jika user salah menjawab
         if (!isCorrect)
         {
             bgB.color = correctColor;

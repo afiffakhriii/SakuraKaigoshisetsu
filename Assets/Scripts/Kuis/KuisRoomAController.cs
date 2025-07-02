@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,16 +22,22 @@ public class KuisRoomAController : MonoBehaviour
     public GameObject textA;
     public GameObject textB;
 
-    [Header("Tombol Next (Button UI)")]
+    [Header("Tombol Next")]
     public Button nextButton;
 
+    [Header("Text pada tombol Next")]
+    public Text nextButtonText; // Assign manual di Inspector
+
     [Header("Warna Feedback")]
-    public Color correctColor = new Color(0f, 1f, 0f, 0.5f); // hijau transparan
-    public Color wrongColor = new Color(1f, 0f, 0f, 0.5f);   // merah transparan
-    public Color defaultColor = new Color(1f, 1f, 1f, 1f);   // putih solid
+    public Color correctColor = new Color(0f, 1f, 0f, 0.5f); // Hijau transparan
+    public Color wrongColor = new Color(1f, 0f, 0f, 0.5f);   // Merah transparan
+    public Color defaultColor = new Color(1f, 1f, 1f, 1f);   // Putih solid
 
     [Header("Nama Scene Berikutnya")]
     public string nextSceneName = "SceneKuisRoomB";
+
+    [Header("Animasi Ketik")]
+    public float typeSpeed = 0.03f;
 
     private int clickCount = 0;
     private HashSet<Button> clickedButtons = new HashSet<Button>();
@@ -40,7 +47,6 @@ public class KuisRoomAController : MonoBehaviour
     {
         correctAnswers = new HashSet<Button> { optionB, optionD };
 
-        // Pastikan warna alpha sesuai
         correctColor.a = 0.5f;
         wrongColor.a = 0.5f;
         defaultColor.a = 1f;
@@ -48,6 +54,7 @@ public class KuisRoomAController : MonoBehaviour
         textA.SetActive(false);
         textB.SetActive(false);
         nextButton.gameObject.SetActive(false);
+        nextButtonText.text = "";
 
         ResetBackgroundColors();
 
@@ -94,7 +101,6 @@ public class KuisRoomAController : MonoBehaviour
 
     void ShowFinalFeedback()
     {
-        // Tampilkan jawaban yang benar
         foreach (Button btn in correctAnswers)
         {
             if (!clickedButtons.Contains(btn))
@@ -103,7 +109,6 @@ public class KuisRoomAController : MonoBehaviour
             }
         }
 
-        // Tampilkan jawaban salah yang diklik
         foreach (Button btn in clickedButtons)
         {
             if (!correctAnswers.Contains(btn))
@@ -114,7 +119,22 @@ public class KuisRoomAController : MonoBehaviour
 
         textA.SetActive(true);
         textB.SetActive(true);
+
+        StartCoroutine(ShowNextButtonWithTyping());
+    }
+
+    IEnumerator ShowNextButtonWithTyping()
+    {
         nextButton.gameObject.SetActive(true);
+
+        string fullText = "Next...";
+        nextButtonText.text = "";
+
+        foreach (char c in fullText)
+        {
+            nextButtonText.text += c;
+            yield return new WaitForSeconds(typeSpeed);
+        }
     }
 
     void GoToNextScene()

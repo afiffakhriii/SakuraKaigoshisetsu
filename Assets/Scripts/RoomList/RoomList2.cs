@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class RoomList2 : MonoBehaviour
 {
+    [Header("UI Komponen")]
     public Text displayText;
     public Button nextButton;
     public float typeSpeed = 0.05f;
@@ -12,37 +13,36 @@ public class RoomList2 : MonoBehaviour
 
     private List<string> textList = new List<string>()
     {
-
         "Selanjutnya ruangan yang kedua~",
-
     };
 
     private int currentIndex = 0;
     private bool isTyping = false;
+    private Coroutine typingCoroutine;
+    private string currentFullText = "";
 
     void Start()
     {
         nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(ShowNextText);
-        StartCoroutine(PlayText(textList[currentIndex]));
+        nextButton.onClick.AddListener(OnNextClicked);
+        PlayCurrentText();
     }
 
-    void ShowNextText()
+    void Update()
     {
-        if (!isTyping && currentIndex < textList.Count - 1)
+        if (Input.GetMouseButtonDown(0) && isTyping)
         {
-            currentIndex++;
-            nextButton.gameObject.SetActive(false);
-            StartCoroutine(PlayText(textList[currentIndex]));
-        }
-        else
-        {
-            nextButton.gameObject.SetActive(false);
-            // Tambahkan aksi jika ingin lanjut ke scene lain di sini
+            SkipTyping();
         }
     }
 
-    IEnumerator PlayText(string fullText)
+    void PlayCurrentText()
+    {
+        currentFullText = textList[currentIndex];
+        typingCoroutine = StartCoroutine(TypeText(currentFullText));
+    }
+
+    IEnumerator TypeText(string fullText)
     {
         isTyping = true;
         displayText.text = "";
@@ -55,6 +55,44 @@ public class RoomList2 : MonoBehaviour
 
         isTyping = false;
         yield return new WaitForSeconds(delayBetweenTexts);
-        nextButton.gameObject.SetActive(true);
+        ContinueOrShowNext();
+    }
+
+    void SkipTyping()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        displayText.text = currentFullText;
+        isTyping = false;
+        StartCoroutine(SkipDelayAndContinue());
+    }
+
+    IEnumerator SkipDelayAndContinue()
+    {
+        yield return new WaitForSeconds(delayBetweenTexts);
+        ContinueOrShowNext();
+    }
+
+    void ContinueOrShowNext()
+    {
+        currentIndex++;
+
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true); // ✅ Tampilkan tombol Next setelah semua teks selesai
+        }
+    }
+
+    void OnNextClicked()
+    {
+        // Tambahkan aksi setelah tombol next diklik
+        Debug.Log("Lanjut ke scene berikutnya...");
+        // Contoh:
+        // SceneManager.LoadScene("SceneSelanjutnya");
     }
 }

@@ -50,7 +50,7 @@ public class MainKuis : MonoBehaviour
         {"Obat yang diminum", "Obat semprot", "Obat suntik", "Obat oles / salep"}
     };
 
-    private char[] correctAnswers = new char[8] { 'A', 'B', 'C', 'D', 'A', 'B', 'C', 'D' };
+    private char[] correctAnswers = new char[8] { 'B', 'C', 'A', 'A', 'C', 'D', 'B', 'D' };
 
     void Start()
     {
@@ -138,7 +138,6 @@ public class MainKuis : MonoBehaviour
         }
         else
         {
-            // Jika soal terakhir, lanjut ke SceneLast
             PlayerPrefs.DeleteAll();
             SceneManager.LoadScene("SceneLast");
         }

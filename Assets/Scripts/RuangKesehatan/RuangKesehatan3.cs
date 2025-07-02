@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RuangKesehatan3 : MonoBehaviour
+public class KamarKesehatan3 : MonoBehaviour
 {
+    [Header("Teks Utama")]
     public Text displayText;
     public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
+
+    [Header("Teks Animasi Looping (misalnya: 'Ketuk untuk lanjut...')")]
+    public Text loopingTextUI;
+    [TextArea] public string loopingText = "Ketuk layar untuk lanjut...";
+    public float loopTypeSpeed = 0.07f;
+    public float loopDelay = 1f;
 
     private List<string> textList = new List<string>()
     {
@@ -17,44 +24,107 @@ public class RuangKesehatan3 : MonoBehaviour
 
     private int currentIndex = 0;
     private bool isTyping = false;
+    private Coroutine typingCoroutine;
+    private string currentFullText = "";
 
     void Start()
     {
         nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(ShowNextText);
-        StartCoroutine(PlayAllInitialTexts());
-    }
+        nextButton.onClick.AddListener(OnNextClicked);
 
-    void ShowNextText()
-    {
-        nextButton.gameObject.SetActive(false);
-        // Aksi setelah teks 1 & 2 selesai dan tombol next ditekan
-        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
-        // Contoh jika ingin pindah scene:
-        // SceneManager.LoadScene("SceneMakananMinuman");
-    }
+        PlayCurrentText();
 
-    IEnumerator PlayAllInitialTexts()
-    {
-        for (int i = 0; i < textList.Count; i++)
+        // Mulai animasi teks looping
+        if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
         {
-            yield return StartCoroutine(PlayText(textList[i]));
-            yield return new WaitForSeconds(delayBetweenTexts);
+            StartCoroutine(LoopingTypeEffect());
         }
-
-        // Setelah kedua teks selesai, tampilkan tombol Next
-        nextButton.gameObject.SetActive(true);
     }
 
-    IEnumerator PlayText(string fullText)
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && isTyping)
+        {
+            SkipTyping();
+        }
+    }
+
+    void PlayCurrentText()
+    {
+        currentFullText = textList[currentIndex];
+        typingCoroutine = StartCoroutine(TypeText(currentFullText));
+    }
+
+    IEnumerator TypeText(string fullText)
     {
         isTyping = true;
         displayText.text = "";
+
         foreach (char c in fullText)
         {
             displayText.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
+
         isTyping = false;
+
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        currentIndex++;
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true);
+        }
+    }
+
+    void SkipTyping()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        displayText.text = currentFullText;
+        isTyping = false;
+
+        StartCoroutine(SkipDelayThenContinue());
+    }
+
+    IEnumerator SkipDelayThenContinue()
+    {
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        currentIndex++;
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true);
+        }
+    }
+
+    void OnNextClicked()
+    {
+        Debug.Log("Lanjut ke scene berikutnya...");
+        // Contoh:
+        // SceneManager.LoadScene("ScenePerawatanMakan");
+    }
+
+    IEnumerator LoopingTypeEffect()
+    {
+        while (true)
+        {
+            loopingTextUI.text = "";
+            foreach (char c in loopingText)
+            {
+                loopingTextUI.text += c;
+                yield return new WaitForSeconds(loopTypeSpeed);
+            }
+            yield return new WaitForSeconds(loopDelay);
+        }
     }
 }

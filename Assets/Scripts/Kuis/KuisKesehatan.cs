@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class KuisKesehatan : MonoBehaviour
 {
@@ -25,7 +26,13 @@ public class KuisKesehatan : MonoBehaviour
     public Color defaultColor = new Color(1f, 1f, 1f, 1f);   // putih solid
 
     [Header("Nama Scene Berikutnya")]
-    public string nextSceneName = "SceneRoomList3";
+    public string nextSceneName = "SceneRoomList";
+
+    [Header("Teks Typewriter Looping")]
+    public Text loopingTextUI;
+    [TextArea] public string loopingText = "Pilih dua jawaban yang benar.";
+    public float typeSpeed = 0.05f;
+    public float loopDelay = 1.5f;
 
     private bool answered = false;
 
@@ -35,11 +42,16 @@ public class KuisKesehatan : MonoBehaviour
         ResetBackgroundColors();
 
         optionA.onClick.AddListener(() => OnOptionClicked(optionA, false));
-        optionB.onClick.AddListener(() => OnOptionClicked(optionB, true));  
-        optionC.onClick.AddListener(() => OnOptionClicked(optionC, false));
+        optionB.onClick.AddListener(() => OnOptionClicked(optionB, false));
+        optionC.onClick.AddListener(() => OnOptionClicked(optionC, true)); // ✅ Jawaban benar
         optionD.onClick.AddListener(() => OnOptionClicked(optionD, false));
 
         nextButton.onClick.AddListener(GoToNextScene);
+
+        if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
+        {
+            StartCoroutine(LoopingTypeEffect());
+        }
     }
 
     void ResetBackgroundColors()
@@ -58,10 +70,9 @@ public class KuisKesehatan : MonoBehaviour
         Image bg = GetBackgroundForButton(btn);
         bg.color = isCorrect ? correctColor : wrongColor;
 
-        // Tampilkan jawaban benar (B) jika user salah menjawab
         if (!isCorrect)
         {
-            bgB.color = correctColor;
+            bgC.color = correctColor;
         }
 
         nextButton.gameObject.SetActive(true);
@@ -80,5 +91,21 @@ public class KuisKesehatan : MonoBehaviour
         if (btn == optionC) return bgC;
         if (btn == optionD) return bgD;
         return null;
+    }
+
+    IEnumerator LoopingTypeEffect()
+    {
+        while (true)
+        {
+            loopingTextUI.text = "";
+
+            foreach (char c in loopingText)
+            {
+                loopingTextUI.text += c;
+                yield return new WaitForSeconds(typeSpeed);
+            }
+
+            yield return new WaitForSeconds(loopDelay);
+        }
     }
 }

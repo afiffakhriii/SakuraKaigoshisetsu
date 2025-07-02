@@ -18,44 +18,80 @@ public class RuangKesehatan : MonoBehaviour
 
     private int currentIndex = 0;
     private bool isTyping = false;
+    private Coroutine typingCoroutine;
+    private string currentFullText = "";
 
     void Start()
     {
         nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(ShowNextText);
-        StartCoroutine(PlayAllInitialTexts());
+        nextButton.onClick.AddListener(OnNextClicked);
+        PlayCurrentText();
     }
 
-    void ShowNextText()
+    void Update()
     {
-        nextButton.gameObject.SetActive(false);
-        // Aksi setelah teks 1 & 2 selesai dan tombol next ditekan
-        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
-        // Contoh jika ingin pindah scene:
-        // SceneManager.LoadScene("SceneMakananMinuman");
-    }
-
-    IEnumerator PlayAllInitialTexts()
-    {
-        for (int i = 0; i < textList.Count; i++)
+        if (Input.GetMouseButtonDown(0) && isTyping)
         {
-            yield return StartCoroutine(PlayText(textList[i]));
-            yield return new WaitForSeconds(delayBetweenTexts);
+            SkipTyping();
         }
-
-        // Setelah kedua teks selesai, tampilkan tombol Next
-        nextButton.gameObject.SetActive(true);
     }
 
-    IEnumerator PlayText(string fullText)
+    void PlayCurrentText()
+    {
+        currentFullText = textList[currentIndex];
+        typingCoroutine = StartCoroutine(TypeText(currentFullText));
+    }
+
+    IEnumerator TypeText(string fullText)
     {
         isTyping = true;
         displayText.text = "";
+
         foreach (char c in fullText)
         {
             displayText.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
+
         isTyping = false;
+        yield return new WaitForSeconds(delayBetweenTexts);
+        ContinueOrFinish();
+    }
+
+    void SkipTyping()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        displayText.text = currentFullText;
+        isTyping = false;
+        StartCoroutine(SkipDelayAndContinue());
+    }
+
+    IEnumerator SkipDelayAndContinue()
+    {
+        yield return new WaitForSeconds(delayBetweenTexts);
+        ContinueOrFinish();
+    }
+
+    void ContinueOrFinish()
+    {
+        currentIndex++;
+
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true); // ✅ Tampilkan tombol Next setelah semua teks selesai
+        }
+    }
+
+    void OnNextClicked()
+    {
+        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
+        // Contoh jika ingin pindah scene:
+        // SceneManager.LoadScene("SceneMakananMinuman");
     }
 }

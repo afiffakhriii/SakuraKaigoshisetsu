@@ -8,16 +8,17 @@ public class TextSwitcher_kuisMakan : MonoBehaviour
     public Text displayText;
     public float typeSpeed = 0.05f;
 
-    private List<string> textList = new List<string>()
-    {
-        "Isilah bagian rumpang pada tanda kurung di atas!"
-    };
+    [TextArea(2, 5)]
+    public List<string> textList = new List<string>();
 
     private int currentIndex = 0;
 
     void Start()
     {
-        StartCoroutine(TypeText(textList[currentIndex]));
+        if (textList != null && textList.Count > 0)
+        {
+            StartCoroutine(TypeText(textList[currentIndex]));
+        }
     }
 
     IEnumerator TypeText(string fullText)

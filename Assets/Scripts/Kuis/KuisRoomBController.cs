@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,13 +25,19 @@ public class KuisRoomBController : MonoBehaviour
     [Header("Tombol Next (gunakan UI Button, bukan Text)")]
     public Button nextButton;
 
+    [Header("Text di dalam tombol Next")]
+    public Text nextButtonText;
+
     [Header("Warna Feedback")]
-    public Color correctColor = new Color(0f, 1f, 0f, 0.5f); // hijau transparan
-    public Color wrongColor = new Color(1f, 0f, 0f, 0.5f);   // merah transparan
-    public Color defaultColor = new Color(1f, 1f, 1f, 1f);   // putih solid
+    public Color correctColor = new Color(0f, 1f, 0f, 0.5f);
+    public Color wrongColor = new Color(1f, 0f, 0f, 0.5f);
+    public Color defaultColor = new Color(1f, 1f, 1f, 1f);
 
     [Header("Nama Scene Berikutnya")]
     public string nextSceneName = "SceneKuisRoomC";
+
+    [Header("Animasi Ketik")]
+    public float typeSpeed = 0.03f;
 
     private int clickCount = 0;
     private HashSet<Button> clickedButtons = new HashSet<Button>();
@@ -47,6 +54,7 @@ public class KuisRoomBController : MonoBehaviour
         textA.SetActive(false);
         textB.SetActive(false);
         nextButton.gameObject.SetActive(false);
+        nextButtonText.text = "";
 
         ResetBackgroundColors();
 
@@ -113,7 +121,22 @@ public class KuisRoomBController : MonoBehaviour
 
         textA.SetActive(true);
         textB.SetActive(true);
+
+        StartCoroutine(ShowNextButtonWithTyping());
+    }
+
+    IEnumerator ShowNextButtonWithTyping()
+    {
         nextButton.gameObject.SetActive(true);
+
+        string fullText = "Next...";
+        nextButtonText.text = "";
+
+        foreach (char c in fullText)
+        {
+            nextButtonText.text += c;
+            yield return new WaitForSeconds(typeSpeed);
+        }
     }
 
     void GoToNextScene()

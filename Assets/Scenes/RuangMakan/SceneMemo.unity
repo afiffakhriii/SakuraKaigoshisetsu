@@ -119,6 +119,93 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &89686402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89686403}
+  - component: {fileID: 89686405}
+  - component: {fileID: 89686404}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &89686403
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89686402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 947792387}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6.6502, y: 212}
+  m_SizeDelta: {x: 519, y: 872.6729}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &89686404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89686402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 84684ee557e70c44db4ddc3c0339688e, type: 3}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u3042\u3055\uFF1A\u3057\u305A\u304A\u3070\u3042\u3055\u3093\u3001\u304A\u3072\u308B\u3054\u306F\u3093\u306E\u3058\u304B\u3093\u3067\u3059\u3088\u3002\u3044\u3063\u3057\u3087\u306B\u305F\u3079\u307E\u3057\u3087\u3046\u304B\uFF1F\r\n\r\n\r\n\u3057\u305A\uFF1A\u306F\u3044\u3001\u3042\u308A\u304C\u3068\u3046\u3002\u3067\u3082\u3001\u307F\u304E\u3066\u304C
+    \u3044\u305F\u304F\u3066\u3001\u305F\u3079\u308B\u306E\u304C \u3059\u3053\u3057
+    \u305F\u3044\u3078\u3093\u3067\u3059\u3002\r\n\r\n\r\n\u3042\u3055\uFF1A\u3060\u3044\u3058\u3087\u3046\u3076\u3067\u3059\u3088\u3002\u308F\u305F\u3057\u304C
+    \u304A\u3066\u3064\u3060\u3044\u3057\u307E\u3059\u306D\u3002\u3086\u3063\u304F\u308A
+    \u305F\u3079\u307E\u3057\u3087\u3046\u3002\r\n\r\n                                          
+    ~\r\n\r\n\u3042\u3055\uFF1A\u304D\u3087\u3046\u306E \u30E1\u30CB\u30E5\u30FC\u306F\u3001\u3055\u304B\u306A
+    \u3068 \u305F\u307E\u3054\u3067\u3059\u3088\u3002\u3068\u3066\u3082 \u3084\u308F\u3089\u304B\u304F\u3066\u3001\u304A\u3044\u3057\u3044\u3067\u3059\u3002\r\n\r\n\r\n\u3057\u305A\uFF1A\u305D\u3046\u3067\u3059\u304B\uFF1F\u3084\u308F\u3089\u304B\u3044\u306A\u3089\u3001\u305F\u3079\u3084\u3059\u305D\u3046\u3067\u3059\u306D\u3002\r\n\r\n\r\n\u3042\u3055\uFF1A\u306F\u3044\u3001\u304A\u3070\u3042\u3055\u3093\u306E
+    \u307F\u304E\u3066\u304C \u3044\u305F\u3044\u304B\u3089\u3001\u305F\u3079\u3084\u3059\u3044\u3088\u3046\u306B
+    \u3053\u307E\u304B\u304F \u304D\u3063\u3066\u3042\u308A\u307E\u3059\u3002\n\r\n\r\n\u3057\u305A\uFF1A\u3054\u3057\u3093\u305B\u3064\u306B\u3001\u3042\u308A\u304C\u3068\u3046\u3002"
+--- !u!222 &89686405
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89686402}
+  m_CullTransparentMesh: 1
 --- !u!1 &385489489
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 217.29999, y: -720}
+  m_AnchoredPosition: {x: 217.29999, y: -707}
   m_SizeDelta: {x: 97.7004, y: 99.9575}
   m_Pivot: {x: 0.5, y: 0.5899127}
 --- !u!114 &385489491
@@ -288,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -203.99997, y: -720}
+  m_AnchoredPosition: {x: -203.99997, y: -707}
   m_SizeDelta: {x: 97.7004, y: 99.9575}
   m_Pivot: {x: 0.5, y: 0.5899127}
 --- !u!114 &453029163
@@ -510,7 +597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2522236200840042174, guid: 312af6f919cc0ac478dc3a7d6d925a48, type: 3}
+  m_Sprite: {fileID: -1027470213552786625, guid: 54d01e1e17ed0d942997d21fbe93c90d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -623,6 +710,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 851321608}
+  - {fileID: 89686403}
   - {fileID: 453029162}
   - {fileID: 385489490}
   - {fileID: 1560853400}
@@ -687,13 +775,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003305677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ec8544087bfae48926dd17245be9a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4709f9fb0d8624646a4f64830604109b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 851321609}
-  backgroundSprites:
-  - {fileID: -2522236200840042174, guid: 312af6f919cc0ac478dc3a7d6d925a48, type: 3}
-  - {fileID: -573150115239919657, guid: 2fa82981b97c90a4cbf10a22a2cef8a2, type: 3}
+  textContainer: {fileID: 89686403}
+  mainText: {fileID: 89686404}
+  textJapan: "\u3042\u3055\uFF1A\u3057\u305A\u304A\u3070\u3042\u3055\u3093\u3001\u304A\u3072\u308B\u3054\u306F\u3093\u306E\u3058\u304B\u3093\u3067\u3059\u3088\u3002\u3044\u3063\u3057\u3087\u306B\u305F\u3079\u307E\u3057\u3087\u3046\u304B\uFF1F\r\n\r\n\r\n\u3057\u305A\uFF1A\u306F\u3044\u3001\u3042\u308A\u304C\u3068\u3046\u3002\u3067\u3082\u3001\u307F\u304E\u3066\u304C
+    \u3044\u305F\u304F\u3066\u3001\u305F\u3079\u308B\u306E\u304C \u3059\u3053\u3057
+    \u305F\u3044\u3078\u3093\u3067\u3059\u3002\r\n\r\n\r\n\u3042\u3055\uFF1A\u3060\u3044\u3058\u3087\u3046\u3076\u3067\u3059\u3088\u3002\u308F\u305F\u3057\u304C
+    \u304A\u3066\u3064\u3060\u3044\u3057\u307E\u3059\u306D\u3002\u3086\u3063\u304F\u308A
+    \u305F\u3079\u307E\u3057\u3087\u3046\u3002\r\n\r\n                                          
+    ~\r\n\r\n\u3042\u3055\uFF1A\u304D\u3087\u3046\u306E \u30E1\u30CB\u30E5\u30FC\u306F\u3001\u3055\u304B\u306A
+    \u3068 \u305F\u307E\u3054\u3067\u3059\u3088\u3002\u3068\u3066\u3082 \u3084\u308F\u3089\u304B\u304F\u3066\u3001\u304A\u3044\u3057\u3044\u3067\u3059\u3002\r\n\r\n\r\n\u3057\u305A\uFF1A\u305D\u3046\u3067\u3059\u304B\uFF1F\u3084\u308F\u3089\u304B\u3044\u306A\u3089\u3001\u305F\u3079\u3084\u3059\u305D\u3046\u3067\u3059\u306D\u3002\r\n\r\n\r\n\u3042\u3055\uFF1A\u306F\u3044\u3001\u304A\u3070\u3042\u3055\u3093\u306E
+    \u307F\u304E\u3066\u304C \u3044\u305F\u3044\u304B\u3089\u3001\u305F\u3079\u3084\u3059\u3044\u3088\u3046\u306B
+    \u3053\u307E\u304B\u304F \u304D\u3063\u3066\u3042\u308A\u307E\u3059\u3002\r\n\r\n\r\n\u3057\u305A\uFF1A\u3054\u3057\u3093\u305B\u3064\u306B\u3001\u3042\u308A\u304C\u3068\u3046\u3002"
+  textIndonesia: "Asa: Shizu Obaasan, ini waktunya makan siang. Mau makan bersama?\r\n\r\n\r\nShizu:
+    Iya, terima kasih. Tapi tangan kanan saya sakit, jadi makan agak sulit.\r\n\r\n\r\nAsa:
+    Tidak apa-apa. Saya akan membantu, ya. Mari kita makan pelan-pelan.\r\n\r\n                                     
+    ~\r\n\r\nAsa: Menu hari ini adalah ikan dan telur. Teksturnya sangat lembut dan
+    enak, lho.\r\n\r\n\r\nShizu: Oh, begitu ya? Kalau lembut, sepertinya mudah dimakan.\r\n\r\n\r\nAsa:
+    Ya, karena tangan kanan Obaasan sakit, makanannya sudah dipotong kecil-kecil
+    agar mudah dimakan.\r\n\r\n\r\nShizu: Terima kasih atas kebaikanmu."
+  fontSizeJapan: 32
+  fontSizeIndonesia: 36
+  slideDuration: 0.7
+  slideDistance: 1000
   nextButton: {fileID: 385489492}
   backButton: {fileID: 453029164}
   nextSceneName: SceneKuisRuangMakan
@@ -734,7 +840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.299988, y: -720}
+  m_AnchoredPosition: {x: 6.299988, y: -707}
   m_SizeDelta: {x: 97.7004, y: 99.9575}
   m_Pivot: {x: 0.5, y: 0.5899127}
 --- !u!114 &1560853401

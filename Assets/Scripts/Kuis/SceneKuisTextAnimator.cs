@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class SceneKuisTextAnimator : MonoBehaviour
 {
     [Header("UI Komponen")]
-    public Text displayText;           // Text UI legacy untuk tampilkan kalimat
-    public Button nextButton;          // Tombol next
-    public float typeSpeed = 0.03f;    // Kecepatan efek ketik
+    public Text displayText;
+    public Button nextButton;
+    public float typeSpeed = 0.03f;
     public float delayBetweenTexts = 1f;
 
     private List<string> textList = new List<string>()
@@ -20,6 +20,11 @@ public class SceneKuisTextAnimator : MonoBehaviour
 
     private int currentIndex = 0;
 
+    private bool isTyping = false;
+    private Coroutine typingCoroutine;
+    private string currentFullText = "";
+    private bool isSkipping = false;
+
     void Start()
     {
         nextButton.gameObject.SetActive(false);
@@ -27,13 +32,32 @@ public class SceneKuisTextAnimator : MonoBehaviour
         StartCoroutine(PlayTextSequence());
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isTyping)
+            {
+                SkipTyping();
+            }
+        }
+    }
+
     IEnumerator PlayTextSequence()
     {
         while (currentIndex < textList.Count)
         {
-            yield return StartCoroutine(TypeText(textList[currentIndex]));
-            currentIndex++;
-            yield return new WaitForSeconds(delayBetweenTexts);
+            currentFullText = textList[currentIndex];
+            isSkipping = false;
+
+            typingCoroutine = StartCoroutine(TypeText(currentFullText));
+            yield return typingCoroutine;
+
+            if (!isSkipping)
+            {
+                yield return new WaitForSeconds(delayBetweenTexts);
+                currentIndex++;
+            }
         }
 
         nextButton.gameObject.SetActive(true);
@@ -41,20 +65,40 @@ public class SceneKuisTextAnimator : MonoBehaviour
 
     IEnumerator TypeText(string fullText)
     {
+        isTyping = true;
         displayText.text = "";
         foreach (char c in fullText)
         {
             displayText.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
+        isTyping = false;
+    }
+
+    void SkipTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        displayText.text = currentFullText;
+        isTyping = false;
+        isSkipping = true;
+
+        StartCoroutine(SkipAndContinueAfterDelay());
+    }
+
+    IEnumerator SkipAndContinueAfterDelay()
+    {
+        yield return new WaitForSeconds(delayBetweenTexts);
+        currentIndex++;
+        StartCoroutine(PlayTextSequence());
     }
 
     void OnNextClicked()
     {
-        // ✅ Set flag bahwa kita datang dari SceneTransisiKuisRoom2
         PlayerPrefs.SetInt("DariSceneTransisiKuisRoom2", 1);
-
-        // ✅ Pindah ke SceneRoomList
-        SceneManager.LoadScene("SceneRoomList");
+        SceneManager.LoadScene("SceneKuisRoomA");
     }
 }

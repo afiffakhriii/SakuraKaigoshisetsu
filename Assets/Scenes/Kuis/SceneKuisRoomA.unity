@@ -663,10 +663,12 @@ MonoBehaviour:
   textA: {fileID: 1000740977}
   textB: {fileID: 1256460586}
   nextButton: {fileID: 618132461}
+  nextButtonText: {fileID: 950936664}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
   wrongColor: {r: 0.9339623, g: 0.2863564, b: 0.2863564, a: 0.49803922}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   nextSceneName: SceneKuisRoomB
+  typeSpeed: 0.03
 --- !u!1 &618132460
 GameObject:
   m_ObjectHideFlags: 0

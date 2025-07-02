@@ -5,56 +5,127 @@ using UnityEngine.UI;
 
 public class KamarMandi2 : MonoBehaviour
 {
+    [Header("Teks Utama")]
     public Text displayText;
     public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
+    [Header("Teks Animasi Looping (misalnya: 'Ketuk untuk lanjut...')")]
+    public Text loopingTextUI;
+    [TextArea] public string loopingText = "Ketuk layar untuk lanjut...";
+    public float loopTypeSpeed = 0.07f;
+    public float loopDelay = 1f;
+
     private List<string> textList = new List<string>()
     {
-        "Di yokushitsu ada Yuki Obaasan! Sepertinya membutuhkan pertolongan... Kita bantu Yuki Obaasan, yuk!:",
+        "Di yokushitsu ada Yuki Obaasan! Sepertinya membutuhkan pertolongan... Kita bantu Yuki Obaasan, yuk!",
         "Sebelum itu, apakah di yokushitsu ada hal yang perlu diperhatikan juga? Mari kita cari tahu."
     };
 
     private int currentIndex = 0;
     private bool isTyping = false;
+    private Coroutine typingCoroutine;
+    private string currentFullText = "";
 
     void Start()
     {
         nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(ShowNextText);
-        StartCoroutine(PlayAllTexts());
-    }
+        nextButton.onClick.AddListener(OnNextClicked);
 
-    void ShowNextText()
-    {
-        // Lanjutkan aksi setelah teks 1 & 2 selesai dan tombol next ditekan
-        Debug.Log("Lanjut ke scene berikutnya...");
-        // Contoh: SceneManager.LoadScene("ScenePerawatanMakan");
-    }
+        PlayCurrentText();
 
-    IEnumerator PlayAllTexts()
-    {
-        while (currentIndex < textList.Count)
+        // Mulai animasi teks looping
+        if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
         {
-            yield return StartCoroutine(PlayText(textList[currentIndex]));
-            yield return new WaitForSeconds(delayBetweenTexts);
-            currentIndex++;
+            StartCoroutine(LoopingTypeEffect());
         }
-
-        // Setelah semua teks selesai, baru tampilkan tombol next
-        nextButton.gameObject.SetActive(true);
     }
 
-    IEnumerator PlayText(string fullText)
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && isTyping)
+        {
+            SkipTyping();
+        }
+    }
+
+    void PlayCurrentText()
+    {
+        currentFullText = textList[currentIndex];
+        typingCoroutine = StartCoroutine(TypeText(currentFullText));
+    }
+
+    IEnumerator TypeText(string fullText)
     {
         isTyping = true;
         displayText.text = "";
+
         foreach (char c in fullText)
         {
             displayText.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
+
         isTyping = false;
+
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        currentIndex++;
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true);
+        }
+    }
+
+    void SkipTyping()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        displayText.text = currentFullText;
+        isTyping = false;
+
+        StartCoroutine(SkipDelayThenContinue());
+    }
+
+    IEnumerator SkipDelayThenContinue()
+    {
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        currentIndex++;
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            nextButton.gameObject.SetActive(true);
+        }
+    }
+
+    void OnNextClicked()
+    {
+        Debug.Log("Lanjut ke scene berikutnya...");
+        // Contoh:
+        // SceneManager.LoadScene("ScenePerawatanMakan");
+    }
+
+    IEnumerator LoopingTypeEffect()
+    {
+        while (true)
+        {
+            loopingTextUI.text = "";
+            foreach (char c in loopingText)
+            {
+                loopingTextUI.text += c;
+                yield return new WaitForSeconds(loopTypeSpeed);
+            }
+            yield return new WaitForSeconds(loopDelay);
+        }
     }
 }

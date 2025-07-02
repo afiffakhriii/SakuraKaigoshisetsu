@@ -8,9 +8,6 @@ TextureImporter:
   - first:
       213: 3965176484426393713
     second: ic_clickHere_1
-  - first:
-      213: -7913636905021480084
-    second: ic_clickHere_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -135,10 +132,10 @@ TextureImporter:
       name: ic_clickHere_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 17
-        width: 287
-        height: 242
+        x: 0
+        y: 12
+        width: 306
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +153,10 @@ TextureImporter:
       name: ic_clickHere_1
       rect:
         serializedVersion: 2
-        x: 282
-        y: 85
-        width: 24
-        height: 95
+        x: 2
+        y: 1
+        width: 76
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,27 +166,6 @@ TextureImporter:
       bones: []
       spriteID: 178a7f11103270730800000000000000
       internalID: 3965176484426393713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ic_clickHere_2
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 6
-        width: 76
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c63e5c2c92d1d2290800000000000000
-      internalID: -7913636905021480084
       vertices: []
       indices: 
       edges: []

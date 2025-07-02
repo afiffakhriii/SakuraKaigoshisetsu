@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class KuisRuangMakan : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class KuisRuangMakan : MonoBehaviour
     [Header("Nama Scene Berikutnya")]
     public string nextSceneName = "SceneRoomList";
 
+    [Header("Teks Typewriter Looping")]
+    public Text loopingTextUI;
+    [TextArea] public string loopingText = "Pilih dua jawaban yang benar.";
+    public float typeSpeed = 0.05f;
+    public float loopDelay = 1.5f;
+
     private bool answered = false;
 
     void Start()
@@ -40,6 +47,11 @@ public class KuisRuangMakan : MonoBehaviour
         optionD.onClick.AddListener(() => OnOptionClicked(optionD, false));
 
         nextButton.onClick.AddListener(GoToNextScene);
+
+        if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
+        {
+            StartCoroutine(LoopingTypeEffect());
+        }
     }
 
     void ResetBackgroundColors()
@@ -58,7 +70,6 @@ public class KuisRuangMakan : MonoBehaviour
         Image bg = GetBackgroundForButton(btn);
         bg.color = isCorrect ? correctColor : wrongColor;
 
-        // Tampilkan jawaban benar (C) jika salah
         if (!isCorrect)
         {
             bgC.color = correctColor;
@@ -69,8 +80,8 @@ public class KuisRuangMakan : MonoBehaviour
 
     void GoToNextScene()
     {
-        PlayerPrefs.SetInt("SudahKembaliDariKuis", 1); // ✅ Simpan kondisi kembali
-        SceneManager.LoadScene(nextSceneName);         // ✅ Pindah scene
+        PlayerPrefs.SetInt("SudahKembaliDariKuis", 1);
+        SceneManager.LoadScene(nextSceneName);
     }
 
     Image GetBackgroundForButton(Button btn)
@@ -80,5 +91,21 @@ public class KuisRuangMakan : MonoBehaviour
         if (btn == optionC) return bgC;
         if (btn == optionD) return bgD;
         return null;
+    }
+
+    IEnumerator LoopingTypeEffect()
+    {
+        while (true)
+        {
+            loopingTextUI.text = "";
+
+            foreach (char c in loopingText)
+            {
+                loopingTextUI.text += c;
+                yield return new WaitForSeconds(typeSpeed);
+            }
+
+            yield return new WaitForSeconds(loopDelay);
+        }
     }
 }

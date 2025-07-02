@@ -517,6 +517,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409720443}
   m_CullTransparentMesh: 1
+--- !u!1 &508317018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508317019}
+  - component: {fileID: 508317021}
+  - component: {fileID: 508317020}
+  m_Layer: 5
+  m_Name: img_Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &508317019
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508317018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 944951826}
+  m_Father: {fileID: 851321608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.592611, y: 484.79013}
+  m_SizeDelta: {x: 205.0149, y: 194.4457}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &508317020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508317018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -7324606908788355427, guid: 6dd74789feaf3ce40b2ef772e374f88e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &508317021
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508317018}
+  m_CullTransparentMesh: 1
 --- !u!1 &851321607
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +627,7 @@ RectTransform:
   - {fileID: 2130100812}
   - {fileID: 2105805506}
   - {fileID: 1198744753}
+  - {fileID: 508317019}
   m_Father: {fileID: 947792387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -595,6 +672,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851321607}
+  m_CullTransparentMesh: 1
+--- !u!1 &944951825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944951826}
+  - component: {fileID: 944951828}
+  - component: {fileID: 944951827}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &944951826
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944951825}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 508317019}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5636514}
+  m_AnchoredPosition: {x: -0.000041007996, y: -5.5}
+  m_SizeDelta: {x: 160, y: 88.6936}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &944951827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944951825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 84684ee557e70c44db4ddc3c0339688e, type: 3}
+    m_FontSize: 26
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u3069\u306E\u304F\u3059\u308A\u3092\u3064\u304B\u3048\u3070\u3044\u3044\u3067\u3059\u304B\uFF1F"
+--- !u!222 &944951828
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944951825}
   m_CullTransparentMesh: 1
 --- !u!1 &947792383
 GameObject:
@@ -884,6 +1040,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: {fileID: 1198744754}
   typeSpeed: 0.03
+  textList:
+  - Obat apa yang harus nenek minum?
 --- !u!114 &1003305682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +1067,10 @@ MonoBehaviour:
   wrongColor: {r: 1, g: 0, b: 0, a: 0.5}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   nextSceneName: SceneRoomList4
+  loopingTextUI: {fileID: 944951827}
+  loopingText: "\u3069\u306E\u304F\u3059\u308A\u3092\u3064\u304B\u3048\u3070\u3044\u3044\u3067\u3059\u304B\uFF1F"
+  typeSpeed: 0.05
+  loopDelay: 1.5
 --- !u!1 &1155044565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1286,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Isilah bagian rumpang pada tanda kurung di atas!
+  m_Text: Obat apa yang harus nenek minum?
 --- !u!222 &1198744755
 CanvasRenderer:
   m_ObjectHideFlags: 0
