@@ -17,6 +17,11 @@ public class KamarMandi2 : MonoBehaviour
     public float loopTypeSpeed = 0.07f;
     public float loopDelay = 1f;
 
+    [Header("Animasi Gambar Berganti (Looping)")]
+    public Image image1;
+    public Image image2;
+    public float imageSwitchInterval = 0.4f;
+
     private List<string> textList = new List<string>()
     {
         "Di yokushitsu ada Yuki Obaasan! Sepertinya membutuhkan pertolongan... Kita bantu Yuki Obaasan, yuk!",
@@ -26,6 +31,7 @@ public class KamarMandi2 : MonoBehaviour
     private int currentIndex = 0;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
+    private Coroutine imageSwapCoroutine;
     private string currentFullText = "";
 
     void Start()
@@ -33,9 +39,14 @@ public class KamarMandi2 : MonoBehaviour
         nextButton.gameObject.SetActive(false);
         nextButton.onClick.AddListener(OnNextClicked);
 
+        // Mulai animasi gambar looping
+        if (image1 != null && image2 != null)
+            imageSwapCoroutine = StartCoroutine(SwapImagesLoop());
+
+        // Mulai animasi teks utama
         PlayCurrentText();
 
-        // Mulai animasi teks looping
+        // Mulai animasi teks "Ketuk layar untuk lanjut..."
         if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
         {
             StartCoroutine(LoopingTypeEffect());
@@ -79,6 +90,14 @@ public class KamarMandi2 : MonoBehaviour
         else
         {
             nextButton.gameObject.SetActive(true);
+
+            // Hentikan animasi gambar saat semua teks selesai
+            if (imageSwapCoroutine != null)
+                StopCoroutine(imageSwapCoroutine);
+
+            // Tampilkan gambar tetap (misalnya image1)
+            image1.enabled = true;
+            image2.enabled = false;
         }
     }
 
@@ -105,6 +124,12 @@ public class KamarMandi2 : MonoBehaviour
         else
         {
             nextButton.gameObject.SetActive(true);
+
+            if (imageSwapCoroutine != null)
+                StopCoroutine(imageSwapCoroutine);
+
+            image1.enabled = true;
+            image2.enabled = false;
         }
     }
 
@@ -126,6 +151,20 @@ public class KamarMandi2 : MonoBehaviour
                 yield return new WaitForSeconds(loopTypeSpeed);
             }
             yield return new WaitForSeconds(loopDelay);
+        }
+    }
+
+    IEnumerator SwapImagesLoop()
+    {
+        while (true)
+        {
+            image1.enabled = true;
+            image2.enabled = false;
+            yield return new WaitForSeconds(imageSwitchInterval);
+
+            image1.enabled = false;
+            image2.enabled = true;
+            yield return new WaitForSeconds(imageSwitchInterval);
         }
     }
 }

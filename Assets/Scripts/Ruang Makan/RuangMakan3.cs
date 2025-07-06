@@ -19,7 +19,7 @@ public class RuangMakan3 : MonoBehaviour
 
     private List<string> textList = new List<string>()
     {
-        "Catat poin-poin penting dalam taisetsuna memo, ya! Sekarang mari bantu Seiji Ojiisan."
+        "Catat poin-poin penting dalam taisetsuna memo, ya! Sekarang mari bantu Shizu Obaasan."
     };
 
     private int currentIndex = 0;

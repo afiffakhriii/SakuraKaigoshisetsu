@@ -908,6 +908,10 @@ MonoBehaviour:
   correctColor: {r: 0, g: 1, b: 0, a: 0.5}
   wrongColor: {r: 1, g: 0, b: 0, a: 0.5}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  audioBenar: {fileID: 8300000, guid: ba13702d558df2d41839a4b20bf70082, type: 3}
+  audioSalah: {fileID: 8300000, guid: c7410858cf7e5d44f94f421addc07a6a, type: 3}
+  delaySetelahAudio: 1.2
 --- !u!1 &1155044565
 GameObject:
   m_ObjectHideFlags: 0
