@@ -8,7 +8,6 @@ public class SceneKuisTextAnimator : MonoBehaviour
 {
     [Header("UI Komponen")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.03f;
     public float delayBetweenTexts = 1f;
 
@@ -27,8 +26,6 @@ public class SceneKuisTextAnimator : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
         StartCoroutine(PlayTextSequence());
     }
 
@@ -60,7 +57,9 @@ public class SceneKuisTextAnimator : MonoBehaviour
             }
         }
 
-        nextButton.gameObject.SetActive(true);
+        // Setelah selesai, langsung lanjut ke scene berikutnya
+        PlayerPrefs.SetInt("DariSceneTransisiKuisRoom2", 1);
+        SceneManager.LoadScene("SceneKuisRoomA");
     }
 
     IEnumerator TypeText(string fullText)
@@ -94,11 +93,5 @@ public class SceneKuisTextAnimator : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenTexts);
         currentIndex++;
         StartCoroutine(PlayTextSequence());
-    }
-
-    void OnNextClicked()
-    {
-        PlayerPrefs.SetInt("DariSceneTransisiKuisRoom2", 1);
-        SceneManager.LoadScene("SceneKuisRoomA");
     }
 }

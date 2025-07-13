@@ -7,7 +7,6 @@ public class KamarKesehatan3 : MonoBehaviour
 {
     [Header("Teks Utama")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
@@ -29,12 +28,8 @@ public class KamarKesehatan3 : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
-
         PlayCurrentText();
 
-        // Mulai animasi teks looping
         if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
         {
             StartCoroutine(LoopingTypeEffect());
@@ -67,7 +62,6 @@ public class KamarKesehatan3 : MonoBehaviour
         }
 
         isTyping = false;
-
         yield return new WaitForSeconds(delayBetweenTexts);
 
         currentIndex++;
@@ -77,7 +71,8 @@ public class KamarKesehatan3 : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true);
+            Debug.Log("Semua teks selesai. Tambahkan transisi scene di sini jika perlu.");
+            // Contoh: SceneManager.LoadScene("ScenePerawatanMakan");
         }
     }
 
@@ -103,15 +98,8 @@ public class KamarKesehatan3 : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true);
+            Debug.Log("Semua teks selesai (dari skip). Tambahkan aksi jika perlu.");
         }
-    }
-
-    void OnNextClicked()
-    {
-        Debug.Log("Lanjut ke scene berikutnya...");
-        // Contoh:
-        // SceneManager.LoadScene("ScenePerawatanMakan");
     }
 
     IEnumerator LoopingTypeEffect()

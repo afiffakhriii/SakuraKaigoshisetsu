@@ -7,13 +7,12 @@ public class RoomList3 : MonoBehaviour
 {
     [Header("UI Komponen")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.3f;
 
     private List<string> textList = new List<string>()
     {
-        "Selanjutnya ruangan yang ketiga~",
+         "Selanjutnya ruangan yang ketiga~",
     };
 
     private int currentIndex = 0;
@@ -23,8 +22,6 @@ public class RoomList3 : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
         PlayCurrentText();
     }
 
@@ -55,7 +52,18 @@ public class RoomList3 : MonoBehaviour
 
         isTyping = false;
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+
+        // Tambahkan logika lanjut jika ada teks lain
+        currentIndex++;
+        if (currentIndex < textList.Count)
+        {
+            PlayCurrentText();
+        }
+        else
+        {
+            // Semua teks selesai, bisa tambahkan aksi berikutnya di sini
+            Debug.Log("Semua teks selesai.");
+        }
     }
 
     void SkipTyping()
@@ -65,34 +73,5 @@ public class RoomList3 : MonoBehaviour
 
         displayText.text = currentFullText;
         isTyping = false;
-        StartCoroutine(SkipDelayAndContinue());
-    }
-
-    IEnumerator SkipDelayAndContinue()
-    {
-        yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
-    }
-
-    void ContinueOrShowNext()
-    {
-        currentIndex++;
-
-        if (currentIndex < textList.Count)
-        {
-            PlayCurrentText();
-        }
-        else
-        {
-            nextButton.gameObject.SetActive(true); // ✅ Tampilkan tombol Next setelah semua teks selesai
-        }
-    }
-
-    void OnNextClicked()
-    {
-        // Tambahkan aksi setelah tombol next diklik
-        Debug.Log("Lanjut ke scene berikutnya...");
-        // Contoh:
-        // SceneManager.LoadScene("SceneSelanjutnya");
     }
 }

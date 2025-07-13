@@ -7,7 +7,6 @@ public class KamarMandi2 : MonoBehaviour
 {
     [Header("Teks Utama")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
@@ -36,21 +35,16 @@ public class KamarMandi2 : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
-
-        // Mulai animasi gambar looping
+        // Mulai animasi gambar berganti
         if (image1 != null && image2 != null)
             imageSwapCoroutine = StartCoroutine(SwapImagesLoop());
 
-        // Mulai animasi teks utama
+        // Mulai animasi teks berjalan
         PlayCurrentText();
 
-        // Mulai animasi teks "Ketuk layar untuk lanjut..."
+        // Mulai teks looping jika ada
         if (loopingTextUI != null && !string.IsNullOrEmpty(loopingText))
-        {
             StartCoroutine(LoopingTypeEffect());
-        }
     }
 
     void Update()
@@ -79,26 +73,9 @@ public class KamarMandi2 : MonoBehaviour
         }
 
         isTyping = false;
-
         yield return new WaitForSeconds(delayBetweenTexts);
 
-        currentIndex++;
-        if (currentIndex < textList.Count)
-        {
-            PlayCurrentText();
-        }
-        else
-        {
-            nextButton.gameObject.SetActive(true);
-
-            // Hentikan animasi gambar saat semua teks selesai
-            if (imageSwapCoroutine != null)
-                StopCoroutine(imageSwapCoroutine);
-
-            // Tampilkan gambar tetap (misalnya image1)
-            image1.enabled = true;
-            image2.enabled = false;
-        }
+        ContinueToNextText();
     }
 
     void SkipTyping()
@@ -108,14 +85,17 @@ public class KamarMandi2 : MonoBehaviour
 
         displayText.text = currentFullText;
         isTyping = false;
-
         StartCoroutine(SkipDelayThenContinue());
     }
 
     IEnumerator SkipDelayThenContinue()
     {
         yield return new WaitForSeconds(delayBetweenTexts);
+        ContinueToNextText();
+    }
 
+    void ContinueToNextText()
+    {
         currentIndex++;
         if (currentIndex < textList.Count)
         {
@@ -123,21 +103,15 @@ public class KamarMandi2 : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true);
-
+            // Semua teks selesai, hentikan animasi gambar
             if (imageSwapCoroutine != null)
                 StopCoroutine(imageSwapCoroutine);
 
             image1.enabled = true;
             image2.enabled = false;
-        }
-    }
 
-    void OnNextClicked()
-    {
-        Debug.Log("Lanjut ke scene berikutnya...");
-        // Contoh:
-        // SceneManager.LoadScene("ScenePerawatanMakan");
+            Debug.Log("Semua teks selesai. Tambahkan aksi berikutnya jika diperlukan.");
+        }
     }
 
     IEnumerator LoopingTypeEffect()

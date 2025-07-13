@@ -8,7 +8,6 @@ public class SceneKuisTextAnimator2 : MonoBehaviour
 {
     [Header("UI Komponen")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.03f;
     public float delayBetweenTexts = 1f;
 
@@ -25,14 +24,12 @@ public class SceneKuisTextAnimator2 : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
         StartCoroutine(PlayTextSequence());
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // klik di canvas mana saja
+        if (Input.GetMouseButtonDown(0))
         {
             if (isTyping)
             {
@@ -58,7 +55,9 @@ public class SceneKuisTextAnimator2 : MonoBehaviour
             }
         }
 
-        nextButton.gameObject.SetActive(true);
+        // Setelah semua teks ditampilkan, lanjut ke scene berikutnya
+        PlayerPrefs.SetInt("DariSceneTransisiKuisRoom2", 1);
+        SceneManager.LoadScene("SceneRoomList");
     }
 
     IEnumerator TypeText(string fullText)
@@ -94,11 +93,5 @@ public class SceneKuisTextAnimator2 : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenTexts);
         currentIndex++;
         StartCoroutine(PlayTextSequence());
-    }
-
-    void OnNextClicked()
-    {
-        PlayerPrefs.SetInt("DariSceneTransisiKuisRoom2", 1);
-        SceneManager.LoadScene("SceneRoomList");
     }
 }

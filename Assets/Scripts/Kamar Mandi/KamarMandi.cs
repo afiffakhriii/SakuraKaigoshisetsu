@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class KamarMandi : MonoBehaviour
 {
-    [Header("Teks dan Tombol")]
+    [Header("Teks dan Tampilan")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
@@ -30,12 +29,10 @@ public class KamarMandi : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
-
         // Mulai animasi gambar berganti
         imageSwapCoroutine = StartCoroutine(SwapImagesLoop());
 
+        // Mulai teks pertama
         PlayCurrentText();
     }
 
@@ -95,15 +92,15 @@ public class KamarMandi : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true);
-
             // Stop animasi gambar jika sudah selesai semua teks
             if (imageSwapCoroutine != null)
                 StopCoroutine(imageSwapCoroutine);
 
-            // Tampilkan satu gambar secara tetap (misalnya image1)
+            // Tampilkan satu gambar tetap
             image1.enabled = true;
             image2.enabled = false;
+
+            Debug.Log("Semua teks selesai. Tambahkan aksi berikutnya di sini jika perlu.");
         }
     }
 
@@ -119,12 +116,5 @@ public class KamarMandi : MonoBehaviour
             image2.enabled = true;
             yield return new WaitForSeconds(imageSwitchInterval);
         }
-    }
-
-    void OnNextClicked()
-    {
-        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
-        // Contoh jika ingin pindah scene:
-        // SceneManager.LoadScene("SceneMakananMinuman");
     }
 }

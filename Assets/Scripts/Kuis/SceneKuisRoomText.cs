@@ -17,7 +17,7 @@ public class SceneKuisRoomText : MonoBehaviour
 
     private List<int> fontSizeList = new List<int>()
     {
-        35, 35
+        33, 33
     };
 
     private int currentIndex = 0;

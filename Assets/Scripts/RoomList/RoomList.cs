@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class RoomList : MonoBehaviour
 {
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.3f;
 
     private List<string> textList = new List<string>()
     {
-        "Kita mulai dari ruangan yang pertama...",
+        "Kita mulai dari ruangan yang pertama..."
     };
 
     private int currentIndex = 0;
@@ -22,8 +21,6 @@ public class RoomList : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(ShowNextText);
         PlayCurrentText();
     }
 
@@ -55,7 +52,19 @@ public class RoomList : MonoBehaviour
         isTyping = false;
 
         yield return new WaitForSeconds(delayBetweenTexts);
-        nextButton.gameObject.SetActive(true);
+
+        // Jika ingin lanjut ke teks berikutnya otomatis, aktifkan blok ini:
+        /*
+        if (currentIndex < textList.Count - 1)
+        {
+            currentIndex++;
+            PlayCurrentText();
+        }
+        else
+        {
+            // Semua teks selesai
+        }
+        */
     }
 
     void SkipTyping()
@@ -67,28 +76,5 @@ public class RoomList : MonoBehaviour
 
         displayText.text = currentFullText;
         isTyping = false;
-
-        StartCoroutine(ShowNextButtonAfterDelay());
-    }
-
-    IEnumerator ShowNextButtonAfterDelay()
-    {
-        yield return new WaitForSeconds(delayBetweenTexts);
-        nextButton.gameObject.SetActive(true);
-    }
-
-    void ShowNextText()
-    {
-        nextButton.gameObject.SetActive(false);
-
-        if (currentIndex < textList.Count - 1)
-        {
-            currentIndex++;
-            PlayCurrentText();
-        }
-        else
-        {
-            // Semua teks selesai. Tambahkan logika pindah scene atau set active objek lain jika diperlukan
-        }
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class RuangMakan : MonoBehaviour
 {
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
@@ -23,8 +22,6 @@ public class RuangMakan : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
         PlayCurrentText();
     }
 
@@ -56,7 +53,7 @@ public class RuangMakan : MonoBehaviour
         isTyping = false;
 
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+        ContinueToNextText();
     }
 
     void SkipTyping()
@@ -66,17 +63,16 @@ public class RuangMakan : MonoBehaviour
 
         displayText.text = currentFullText;
         isTyping = false;
-
         StartCoroutine(SkipDelayAndContinue());
     }
 
     IEnumerator SkipDelayAndContinue()
     {
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+        ContinueToNextText();
     }
 
-    void ContinueOrShowNext()
+    void ContinueToNextText()
     {
         currentIndex++;
 
@@ -86,14 +82,10 @@ public class RuangMakan : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true); // ✅ Tombol Next dijamin muncul
+            // Semua teks selesai – tambahkan logika lanjutan di sini jika diperlukan
+            Debug.Log("Semua teks selesai.");
+            // Contoh:
+            // SceneManager.LoadScene("SceneMakananMinuman");
         }
-    }
-
-    void OnNextClicked()
-    {
-        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
-        // Contoh:
-        // SceneManager.LoadScene("SceneMakananMinuman");
     }
 }

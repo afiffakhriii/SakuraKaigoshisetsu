@@ -7,7 +7,6 @@ public class RuangMakan2 : MonoBehaviour
 {
     [Header("Teks Utama")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
@@ -19,8 +18,8 @@ public class RuangMakan2 : MonoBehaviour
 
     private List<string> textList = new List<string>()
     {
-        "Wah, ada Seiji Ojiisan! Sepertinya sedang lapar... Kita bantu Seiji Ojiisan untuk makan, yuk!",
-        "Sebelum itu, ada hal yang perlu diperhatikan dalam perawatan lansia ketika makan, ada apa saja, ya...?"
+        "Wah, ada Shizu Obaasan! Sepertinya sedang lapar... Kita bantu Shizu Obaasan untuk makan, yuk!",
+        "Sebelum itu, ada hal yang perlu diperhatikan dalam perawatan lansia ketika makan, ada apa saja, ya..."
     };
 
     private int currentIndex = 0;
@@ -30,9 +29,6 @@ public class RuangMakan2 : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
-
         // Mulai teks utama
         PlayCurrentText();
 
@@ -70,7 +66,7 @@ public class RuangMakan2 : MonoBehaviour
 
         isTyping = false;
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+        ContinueToNextText();
     }
 
     void SkipTyping()
@@ -80,16 +76,17 @@ public class RuangMakan2 : MonoBehaviour
 
         displayText.text = currentFullText;
         isTyping = false;
+
         StartCoroutine(SkipDelayAndContinue());
     }
 
     IEnumerator SkipDelayAndContinue()
     {
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+        ContinueToNextText();
     }
 
-    void ContinueOrShowNext()
+    void ContinueToNextText()
     {
         currentIndex++;
 
@@ -99,14 +96,9 @@ public class RuangMakan2 : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true);
+            Debug.Log("Semua teks selesai. Tambahkan logika lanjut di sini jika diperlukan.");
+            // Contoh: SceneManager.LoadScene("ScenePerawatanMakan");
         }
-    }
-
-    void OnNextClicked()
-    {
-        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
-        // Contoh: SceneManager.LoadScene("SceneMakananMinuman");
     }
 
     IEnumerator LoopingTypeEffect()

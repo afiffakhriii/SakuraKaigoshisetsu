@@ -714,19 +714,15 @@ MonoBehaviour:
     Bagaimana kondisi tubuh Obaasan?
 
 
-
-    Haruko: Konnichiwa. Kepala saya agak
-    sakit, dan tadi pagi saya sedikit pusing.
-
+    Haruko: Konnichiwa. Kepala saya agak sakit,
+    dan tadi pagi saya sedikit pusing.
 
 
-    Asa: Begitu ya. Apakah Obaasan
-    sudah mengukur tekanan darah hari ini?
-
+    Asa: Begitu ya. Apakah Obaasan sudah
+    mengukur tekanan darah hari ini?
 
 
     Haruko: Ya, sudah. 160 per 90.
-
 
 
     Asa:
@@ -734,20 +730,17 @@ MonoBehaviour:
     Akhir-akhir ini, apakah Obaasan makan makanan manis?
 
 
-
     Haruko: Ya, kemarin
     saya makan sedikit kue.
-
 
 
     Asa: Begitu ya. Hari ini kita periksa kadar gula
     darah juga, ya.
 
 
-
     Haruko: Baik, mohon bantuannya.'
-  fontSizeJapan: 32
-  fontSizeIndonesia: 36
+  fontSizeJapan: 24
+  fontSizeIndonesia: 28
   slideDuration: 0.7
   slideDistance: 1000
   nextButton: {fileID: 385489492}
@@ -1030,8 +1023,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 84684ee557e70c44db4ddc3c0339688e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 12800000, guid: f191ce26e8d966b4ca58d088160575e5, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

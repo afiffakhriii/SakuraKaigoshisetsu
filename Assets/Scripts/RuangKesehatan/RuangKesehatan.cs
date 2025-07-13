@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class RuangKesehatan : MonoBehaviour
 {
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.2f;
 
@@ -23,8 +22,6 @@ public class RuangKesehatan : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
         PlayCurrentText();
     }
 
@@ -84,14 +81,9 @@ public class RuangKesehatan : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true); // ✅ Tampilkan tombol Next setelah semua teks selesai
+            Debug.Log("Semua teks selesai. Tambahkan aksi selanjutnya jika diperlukan.");
+            // Contoh jika ingin langsung pindah scene:
+            // SceneManager.LoadScene("SceneBerikutnya");
         }
-    }
-
-    void OnNextClicked()
-    {
-        Debug.Log("Lanjut ke scene atau aksi berikutnya...");
-        // Contoh jika ingin pindah scene:
-        // SceneManager.LoadScene("SceneMakananMinuman");
     }
 }

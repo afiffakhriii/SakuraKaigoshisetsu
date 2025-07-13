@@ -164,7 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 778285771}
-  nextButton: {fileID: 2130100814}
   typeSpeed: 0.03
   delayBetweenTexts: 1
 --- !u!1 &731504620
@@ -269,8 +268,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 146.92012, y: -178.07991}
-  m_SizeDelta: {x: 316.9287, y: 234.5721}
+  m_AnchoredPosition: {x: 139, y: -181.24048}
+  m_SizeDelta: {x: 296.6792, y: 207.8044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &778285770
 CanvasRenderer:
@@ -301,8 +300,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 84684ee557e70c44db4ddc3c0339688e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 12800000, guid: 1c909e49dd67b2e4299739624f71b373, type: 3}
+    m_FontSize: 27
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0

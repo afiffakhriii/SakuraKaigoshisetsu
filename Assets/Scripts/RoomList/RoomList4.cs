@@ -7,13 +7,12 @@ public class RoomList4 : MonoBehaviour
 {
     [Header("UI Komponen")]
     public Text displayText;
-    public Button nextButton;
     public float typeSpeed = 0.05f;
     public float delayBetweenTexts = 1.3f;
 
     private List<string> textList = new List<string>()
     {
-        "Demikianlah ruangan yang ada di Sakura Kaigoshisetsu yang kita pelajari untuk saat ini. ",
+        "Demikianlah ruangan yang ada di Sakura Kaigoshisetsu yang kita pelajari untuk saat ini.",
         "Ruangan berikutnya akan kita pelajari di kesempatan berikutnya. Sekarang mari uji pemahamanmu, yuk!"
     };
 
@@ -24,8 +23,6 @@ public class RoomList4 : MonoBehaviour
 
     void Start()
     {
-        nextButton.gameObject.SetActive(false);
-        nextButton.onClick.AddListener(OnNextClicked);
         PlayCurrentText();
     }
 
@@ -56,7 +53,8 @@ public class RoomList4 : MonoBehaviour
 
         isTyping = false;
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+
+        ContinueToNextText();
     }
 
     void SkipTyping()
@@ -66,16 +64,17 @@ public class RoomList4 : MonoBehaviour
 
         displayText.text = currentFullText;
         isTyping = false;
+
         StartCoroutine(SkipDelayAndContinue());
     }
 
     IEnumerator SkipDelayAndContinue()
     {
         yield return new WaitForSeconds(delayBetweenTexts);
-        ContinueOrShowNext();
+        ContinueToNextText();
     }
 
-    void ContinueOrShowNext()
+    void ContinueToNextText()
     {
         currentIndex++;
 
@@ -85,15 +84,8 @@ public class RoomList4 : MonoBehaviour
         }
         else
         {
-            nextButton.gameObject.SetActive(true); // ✅ Tampilkan tombol Next setelah semua teks selesai
+            // Semua teks selesai, bisa lanjut ke scene berikutnya atau aktifkan UI lain
+            Debug.Log("Selesai semua teks. Tambahkan logika lanjutan di sini jika perlu.");
         }
-    }
-
-    void OnNextClicked()
-    {
-        // Tambahkan aksi setelah tombol next diklik
-        Debug.Log("Lanjut ke scene berikutnya...");
-        // Contoh:
-        // SceneManager.LoadScene("SceneSelanjutnya");
     }
 }

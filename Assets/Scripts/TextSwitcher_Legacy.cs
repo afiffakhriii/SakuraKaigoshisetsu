@@ -39,52 +39,46 @@ public class TextSwitcher_Legacy : MonoBehaviour
     private string currentFullText = "";
     private Text currentUIText;
     private bool isSkipping = false;
+    private bool isForcedJump = false;
 
     void Start()
     {
-        nextTextButton.gameObject.SetActive(false);
-        nextTextButton.text = "";
-        StartCoroutine(PlayAllTexts());
+        nextTextButton.gameObject.SetActive(true);
+        nextTextButton.text = "Next...";
+        StartCoroutine(PlayTextAtCurrentIndex());
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isTyping)
         {
-            if (isTyping)
-            {
-                SkipTyping();
-            }
+            SkipTyping();
         }
     }
 
-    IEnumerator PlayAllTexts()
+    IEnumerator PlayTextAtCurrentIndex()
     {
-        while (currentIndex < textList.Count)
+        if (currentIndex >= textList.Count)
         {
-            displayText.fontSize = fontSizeList[currentIndex];
-            currentFullText = textList[currentIndex];
-            currentUIText = displayText;
-
-            // Mulai typing
-            isSkipping = false;
-            typingCoroutine = StartCoroutine(TypeText(currentUIText, currentFullText));
-            yield return typingCoroutine;
-
-            // Jika tidak sedang skip (user tidak klik), tunggu delay lalu lanjut
-            if (!isSkipping)
-            {
-                yield return new WaitForSeconds(delayBetweenTexts);
-                currentIndex++;
-            }
+            GoToNextScene();
+            yield break;
         }
 
-        // Setelah selesai semua teks
-        nextTextButton.gameObject.SetActive(true);
-        currentFullText = "Next...";
-        currentUIText = nextTextButton;
-        typingCoroutine = StartCoroutine(TypeText(nextTextButton, currentFullText));
+        displayText.fontSize = fontSizeList[currentIndex];
+        currentFullText = textList[currentIndex];
+        currentUIText = displayText;
+
+        isSkipping = false;
+        typingCoroutine = StartCoroutine(TypeText(currentUIText, currentFullText));
         yield return typingCoroutine;
+
+        if (!isSkipping && !isForcedJump)
+        {
+            yield return new WaitForSeconds(delayBetweenTexts);
+            currentIndex++;
+        }
+
+        isForcedJump = false;
     }
 
     IEnumerator TypeText(Text uiText, string fullText)
@@ -113,18 +107,47 @@ public class TextSwitcher_Legacy : MonoBehaviour
 
         isTyping = false;
         isSkipping = true;
-        StartCoroutine(SkipAndContinueAfterDelay());
+        StartCoroutine(SkipAndContinue());
     }
 
-    IEnumerator SkipAndContinueAfterDelay()
+    IEnumerator SkipAndContinue()
     {
         yield return new WaitForSeconds(delayBetweenTexts);
         currentIndex++;
-        StartCoroutine(PlayAllTexts()); // lanjutkan loop setelah skip
+        StartCoroutine(PlayTextAtCurrentIndex());
     }
 
     public void GoToNextScene()
     {
         SceneManager.LoadScene("SceneRoomA");
+    }
+
+    public void OnEarlyNextClicked()
+    {
+        if (isTyping)
+        {
+            SkipTyping();
+            return;
+        }
+
+        if (currentIndex < 7)
+        {
+            currentIndex = 7; // Langsung ke teks ke-8
+            isForcedJump = true;
+            StopAllCoroutines();
+            StartCoroutine(PlayTextAtCurrentIndex());
+        }
+        else if (currentIndex == 7)
+        {
+            // Setelah teks ke-8 (indeks 7) selesai, langsung ke scene
+            GoToNextScene();
+        }
+        else
+        {
+            // Lanjutkan normal untuk teks ke-9
+            currentIndex++;
+            StopAllCoroutines();
+            StartCoroutine(PlayTextAtCurrentIndex());
+        }
     }
 }
